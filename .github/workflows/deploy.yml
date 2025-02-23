@@ -19,14 +19,14 @@ jobs:
             npm install
           fi
 
+      - name: Run linting
+        run: npm run lint
+
       - name: Build Project (if any build step exists)
         run: |
           if [ -f package.json ]; then
             npm run build
           fi
-
-      - name: Run linting
-        run: npm run lint
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
