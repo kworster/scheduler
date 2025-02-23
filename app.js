@@ -28,6 +28,10 @@ const taskInput = document.getElementById('taskInput');
 const addTaskBtn = document.getElementById('addTaskBtn');
 const taskList = document.getElementById('taskList');
 
+window.addEventListener('load', () => {
+    renderTasks();
+  });
+
 // Add Task
 // addTaskBtn.addEventListener('click', () => {
 //     const task = taskInput.value.trim();
