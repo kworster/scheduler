@@ -132,3 +132,18 @@ function addTask(task) {
         log.error("Error adding task", error);
     }
 }
+
+taskInput.addEventListener("keypress", function(event) {
+    if (event.key === "Enter") {
+      addTaskBtn.click();
+    }
+  });
+
+  taskList.addEventListener("keypress", async function(e) {
+    if (e.target.tagName === 'LI' && e.key === "Enter") {
+      await updateDoc(doc(db, "scheduler", e.target.id), {
+        completed: true
+      });  
+    }
+    renderTasks();
+  });
