@@ -1,12 +1,12 @@
-const CACHE_NAME = 'to-do-pwa-cache-v1';
+const CACHE_NAME = 'event-scheduler-pwa-cache-v1';
 const FILES_TO_CACHE = [
-    '/scheduler',
-    '/scheduler/index.html',
-    '/scheduler/style.css',
-    '/scheduler/app.js',
-    '/scheduler/manifest.json',
-    '/scheduler/icons/icon-128.png',
-    '/scheduler/icons/icon-512.png'
+    './',
+    './index.html',
+    './style.css',
+    './app.js',
+    './manifest.json',
+    './icons/icon-128.png',
+    './icons/icon-512.png'
 ];
 
 self.addEventListener('install', (event) => {
