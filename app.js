@@ -23,14 +23,6 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
-const taskInput = document.getElementById('taskInput');
-const addTaskBtn = document.getElementById('addTaskBtn');
-const taskList = document.getElementById('taskList');
-
-window.addEventListener('load', () => {
-  renderTasks();
-});
-
 try {
     const docRef = await addDoc(collection(db, "scheduler"), {
       first: "Ada",
@@ -41,6 +33,16 @@ try {
   } catch (e) {
     console.error("Error adding document: ", e);
   }
+
+
+const taskInput = document.getElementById('taskInput');
+const addTaskBtn = document.getElementById('addTaskBtn');
+const taskList = document.getElementById('taskList');
+
+window.addEventListener('load', () => {
+  renderTasks();
+});
+
 
 // Add Task
 addTaskBtn.addEventListener('click', async () => {
