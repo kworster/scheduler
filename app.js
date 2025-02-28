@@ -118,11 +118,7 @@ async function renderTasks() {
     renderTasks();
   });
 
-  const querySnapshot = await getDocs(collection(db, "scheduler"));
-querySnapshot.forEach((doc) => {
-  console.log(`${doc.id} => ${doc.data()}`);
-});
-
+ 
 window.addEventListener('error', function (event) {
     console.error('Error occurred: ', event.message);
 });
