@@ -11,9 +11,6 @@ if ('serviceWorker' in navigator) {
         .catch(err => console.error('Service Worker Error:', err));
 }
 
-const app = initializeApp(firebaseConfig);
-const db = getFirestore(app);
-
 const firebaseConfig = {
     apiKey: "AIzaSyAbLefRO7pNCWYvmLtP7jaYZgJVTpURCRk",
   authDomain: "scheduler-13980.firebaseapp.com",
@@ -23,7 +20,8 @@ const firebaseConfig = {
   appId: "1:853608682087:web:9d0c4898b2f0f9040cbac2",
 };
   
-
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
 
 const taskInput = document.getElementById('taskInput');
 const addTaskBtn = document.getElementById('addTaskBtn');
@@ -49,7 +47,7 @@ addTaskBtn.addEventListener('click', async () => {
 // Remove Task
 taskList.addEventListener('click', async (e) => {
   if (e.target.tagName === 'LI') {
-    await updateDoc(doc(db, "scheduler", e.target.id), {
+    await updateDoc(doc(db, "schedule", e.target.id), {
       completed: true
     });  
     e.target.remove();
@@ -83,7 +81,7 @@ async function renderTasks() {
   }
 
   async function addTaskToFirestore(taskText) {
-    let task = await addDoc(collection(db, "scheduler"), {
+    let task = await addDoc(collection(db, "schedule"), {
       text: taskText, 
       completed: false
     });  
@@ -91,7 +89,7 @@ async function renderTasks() {
   }
 
   async function getTasksFromFirestore() {
-    return await getDocs(collection(db, "scheduler"));
+    return await getDocs(collection(db, "schedule"));
   }
 
   function createLiTask(id, text) {
@@ -112,7 +110,7 @@ async function renderTasks() {
   //Allow tasks to be completed on enter
   taskList.addEventListener("keypress", async function(e) {
     if (e.target.tagName === 'LI' && e.key === "Enter") {
-      await updateDoc(doc(db, "scheduler", e.target.id), {
+      await updateDoc(doc(db, "schedule", e.target.id), {
         completed: true
       });  
     }
