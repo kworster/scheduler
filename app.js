@@ -11,6 +11,10 @@ if ('serviceWorker' in navigator) {
         .catch(err => console.error('Service Worker Error:', err));
 }
 
+const taskInput = document.getElementById('taskInput');
+const addTaskBtn = document.getElementById('addTaskBtn');
+const taskList = document.getElementById('taskList');
+
 const firebaseConfig = {
     apiKey: "AIzaSyAbLefRO7pNCWYvmLtP7jaYZgJVTpURCRk",
   authDomain: "scheduler-13980.firebaseapp.com",
@@ -23,11 +27,8 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
-const taskInput = document.getElementById('taskInput');
-const addTaskBtn = document.getElementById('addTaskBtn');
-const taskList = document.getElementById('taskList');
 
-console.log(taskInput);
+
 
 window.addEventListener('load', () => {
   renderTasks();
