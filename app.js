@@ -81,7 +81,7 @@ async function renderTasks() {
   }
 
   async function addTaskToFirestore(taskText) {
-    let task = await addDoc(collection(db, "checklist"), {
+    let task = await addDoc(collection(db, "scheduler"), {
       text: taskText, 
       completed: false
     });  
@@ -89,7 +89,7 @@ async function renderTasks() {
   }
 
   async function getTasksFromFirestore() {
-    return await getDocs(collection(db, "checklist"));
+    return await getDocs(collection(db, "scheduler"));
   }
 
   function createLiTask(id, text) {
