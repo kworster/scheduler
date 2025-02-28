@@ -35,6 +35,7 @@ window.addEventListener('load', () => {
 // Add Task
 addTaskBtn.addEventListener('click', async () => {
     const task = taskInput.value.trim();
+    console.log(task);
     if (task) {
         let taskId = await addTaskToFirestore(task);
         taskInput.value = "";
