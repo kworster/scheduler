@@ -45,14 +45,6 @@ addTaskBtn.addEventListener('click', async () => {
     }
 });
 
-async function addTaskToFirestore(taskText) {
-    let task = await addDoc(collection(db, "scheduler"), {
-      text: taskText, 
-      completed: false
-    });  
-    return task.id;
-  }
-
 // Remove Task
 taskList.addEventListener('click', async (e) => {
   if (e.target.tagName === 'LI') {
@@ -89,7 +81,13 @@ async function renderTasks() {
     });
   }
 
-
+  async function addTaskToFirestore(taskText) {
+    let task = await addDoc(collection(db, "scheduler"), {
+      text: taskText, 
+      completed: false
+    });  
+    return task.id;
+  }
 
   async function getTasksFromFirestore() {
     return await getDocs(collection(db, "scheduler"));
