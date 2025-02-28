@@ -36,7 +36,7 @@ window.addEventListener('load', () => {
 addTaskBtn.addEventListener('click', async () => {
     const task = taskInput.value.trim();
     if (task) {
-        let taskId = await addTaskToFirestore(task);
+        let taskId = await addTaskToFirestore();
         taskInput.value = "";
         
         createLiTask(taskId, task);
