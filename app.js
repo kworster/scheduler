@@ -21,7 +21,7 @@ const firebaseConfig = {
 };
   
 const app = initializeApp(firebaseConfig);
-const db = getFirestore(app);
+const db = getFirestore();
 
 const taskInput = document.getElementById('taskInput');
 const addTaskBtn = document.getElementById('addTaskBtn');
@@ -81,7 +81,7 @@ async function renderTasks() {
   }
 
   async function addTaskToFirestore(taskText) {
-    let task = await addDoc(collection(db, "scheduler", "scheduler"), {
+    let task = await addDoc(collection(db, "scheduler"), {
       text: taskText, 
       completed: false
     });  
