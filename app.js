@@ -31,6 +31,17 @@ window.addEventListener('load', () => {
   renderTasks();
 });
 
+try {
+    const docRef = await addDoc(collection(db, "scheduler"), {
+      first: "Ada",
+      last: "Lovelace",
+      born: 1815
+    });
+    console.log("Document written with ID: ", docRef.id);
+  } catch (e) {
+    console.error("Error adding document: ", e);
+  }
+
 // Add Task
 addTaskBtn.addEventListener('click', async () => {
     const task = taskInput.value.trim();
