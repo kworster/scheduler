@@ -81,7 +81,7 @@ async function renderTasks() {
   }
 
   async function addTaskToFirestore(taskText) {
-    let task = await addDoc(collection(db, "scheduler"), {
+    let task = await addDoc(collection(db, "scheduler", "scheduler"), {
       text: taskText, 
       completed: false
     });  
