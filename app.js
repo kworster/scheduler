@@ -38,8 +38,11 @@ window.addEventListener('load', () => {
 addTaskBtn.addEventListener('click', async () => {
     const task = taskInput.value.trim();
     if (task) {
-        let taskId = await addTaskToFirestore(task);
-        taskInput.value = "";
+      let task = await addDoc(collection(db, "scheduler"), {
+        text: taskText, 
+        completed: false
+      });  
+      return task.id;
         
         createLiTask(taskId, task);
     } else {
