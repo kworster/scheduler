@@ -29,17 +29,10 @@ const addTaskBtn = document.getElementById('addTaskBtn');
 const taskList = document.getElementById('taskList');
 
 
-// window.addEventListener('load', () => {
-//   renderTasks();
-// });
+window.addEventListener('load', () => {
+  renderTasks();
+});
 
-async function addTaskToFirestore(taskText) {
-  let task = await addDoc(collection(db, "scheduler"), {
-    text: taskText, 
-    completed: false
-  });  
-  return task.id;
-}
 
 
 // Add Task
@@ -90,7 +83,13 @@ async function renderTasks() {
     });
   }
 
-  
+  async function addTaskToFirestore(taskText) {
+    let task = await addDoc(collection(db, "scheduler"), {
+      text: taskText, 
+      completed: false
+    });  
+    return task.id;
+  }
 
   async function getTasksFromFirestore() {
     return await getDocs(collection(db, "scheduler"));
