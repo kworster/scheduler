@@ -21,14 +21,13 @@ const firebaseConfig = {
 };
 
 
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
 
-
-const taskInput = document.getElementById('taskInput');
+// const taskInput = document.getElementById('taskInput');
 const addTaskBtn = document.getElementById('addTaskBtn');
 const taskList = document.getElementById('taskList');
 
-const app = initializeApp(firebaseConfig);
-const db = getFirestore(app);
 
 window.addEventListener('load', () => {
   renderTasks();
