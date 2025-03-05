@@ -1,5 +1,6 @@
 import { initializeApp } from 'firebase/app';
 import { doc, getDocs, addDoc, updateDoc, getFirestore, collection } from "firebase/firestore";
+import db from './firebase'; 
 
 const sw = new URL('service-worker.js', import.meta.url)
 if ('serviceWorker' in navigator) {
