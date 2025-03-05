@@ -44,6 +44,14 @@ async function addTaskToFirestore(taskText) {
 
 // Add Task
 addTaskBtn.addEventListener('click', async () => {
+
+  async function addTaskToFirestore(taskText) {
+    let task = await addDoc(collection(db, "scheduler"), {
+      text: taskText, 
+      completed: false
+    });  
+    return task.id;
+  }
     const task = taskInput.value.trim();
     if (task) {
         let taskId = await addTaskToFirestore(task);
