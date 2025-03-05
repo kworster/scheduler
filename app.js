@@ -34,18 +34,40 @@ window.addEventListener('load', () => {
 });
 
 
+addTaskBtn.addEventListener('click', async () => {
+  const task = taskInput.value.trim();
+  if (task) {
+      const taskInput = document.getElementById("taskInput");
+      const taskText = taskInput.value.trim();
+
+      if (taskText) {
+          await addTaskToFirestore(taskText);
+          renderTasks();
+          taskInput.value = "";
+      }
+      renderTasks();
+  }
+});
+
+async function addTaskToFirestore(taskText) {
+  await addDoc(collection(db, "scheduler"), {
+    text: taskText, 
+    completed: false
+  });  
+}
+
 
 // Add Task
-addTaskBtn.addEventListener('click', async () => {
-    const task = taskInput.value.trim();
-    if (task) {
-        let taskId = await addTaskToFirestore(task);
-        taskInput.value = "";
-        createLiTask(taskId, task);
-    } else {+
-        alert("Please enter a task!");
-    }
-});
+// addTaskBtn.addEventListener('click', async () => {
+//     const task = taskInput.value.trim();
+//     if (task) {
+//         let taskId = await addTaskToFirestore(task);
+//         taskInput.value = "";
+//         createLiTask(taskId, task);
+//     } else {+
+//         alert("Please enter a task!");
+//     }
+// });
 
 // Remove Task
 taskList.addEventListener('click', async (e) => {
@@ -83,13 +105,13 @@ async function renderTasks() {
     });
   }
 
-  async function addTaskToFirestore(taskText) {
-    let task = await addDoc(collection(db, "scheduler"), {
-      text: taskText, 
-      completed: false
-    });  
-    return task.id;
-  }
+  // async function addTaskToFirestore(taskText) {
+  //   let task = await addDoc(collection(db, "scheduler"), {
+  //     text: taskText, 
+  //     completed: false
+  //   });  
+  //   return task.id;
+  // }
 
   async function getTasksFromFirestore() {
     return await getDocs(collection(db, "scheduler"));
