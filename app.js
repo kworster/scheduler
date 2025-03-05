@@ -1,6 +1,6 @@
 import { initializeApp } from 'firebase/app';
 import { doc, getDocs, addDoc, updateDoc, getFirestore, collection } from "firebase/firestore";
-import db from './firebase'; 
+
 
 const sw = new URL('service-worker.js', import.meta.url)
 if ('serviceWorker' in navigator) {
@@ -25,7 +25,7 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
-// const taskInput = document.getElementById('taskInput');
+const taskInput = document.getElementById('taskInput');
 const addTaskBtn = document.getElementById('addTaskBtn');
 const taskList = document.getElementById('taskList');
 
@@ -34,41 +34,17 @@ window.addEventListener('load', () => {
   renderTasks();
 });
 
-
+//Add Task
 addTaskBtn.addEventListener('click', async () => {
-  const task = taskInput.value.trim();
-  if (task) {
-      const taskInput = document.getElementById("taskInput");
-      const taskText = taskInput.value.trim();
-
-      if (taskText) {
-          await addTaskToFirestore(taskText);
-          renderTasks();
-          taskInput.value = "";
-      }
-      renderTasks();
-  }
+    const task = taskInput.value.trim();
+    if (task) {
+        let taskId = await addTaskToFirestore(task);
+        taskInput.value = "";
+        createLiTask(taskId, task);
+    } else {+
+        alert("Please enter a task!");
+    }
 });
-
-async function addTaskToFirestore(taskText) {
-  await addDoc(collection(db, "scheduler"), {
-    text: taskText, 
-    completed: false
-  });  
-}
-
-
-// Add Task
-// addTaskBtn.addEventListener('click', async () => {
-//     const task = taskInput.value.trim();
-//     if (task) {
-//         let taskId = await addTaskToFirestore(task);
-//         taskInput.value = "";
-//         createLiTask(taskId, task);
-//     } else {+
-//         alert("Please enter a task!");
-//     }
-// });
 
 // Remove Task
 taskList.addEventListener('click', async (e) => {
@@ -106,13 +82,13 @@ async function renderTasks() {
     });
   }
 
-  // async function addTaskToFirestore(taskText) {
-  //   let task = await addDoc(collection(db, "scheduler"), {
-  //     text: taskText, 
-  //     completed: false
-  //   });  
-  //   return task.id;
-  // }
+  async function addTaskToFirestore(taskText) {
+    let task = await addDoc(collection(db, "scheduler"), {
+      text: taskText, 
+      completed: false
+    });  
+    return task.id;
+  }
 
   async function getTasksFromFirestore() {
     return await getDocs(collection(db, "scheduler"));
