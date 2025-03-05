@@ -32,7 +32,7 @@ input[type="text"] {
 button {
     padding: 10px 15px;
     background-color: 
-#0078D7;
+purple;
     color: 
 white;
     border: none;
@@ -42,7 +42,7 @@ white;
 
 button:hover {
     background-color: 
-#005bb5;
+peru;
 }
 
 ul {
