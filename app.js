@@ -29,9 +29,9 @@ const addTaskBtn = document.getElementById('addTaskBtn');
 const taskList = document.getElementById('taskList');
 
 
-window.addEventListener('load', () => {
-  renderTasks();
-});
+// window.addEventListener('load', () => {
+//   renderTasks();
+// });
 
 async function addTaskToFirestore(taskText) {
   let task = await addDoc(collection(db, "scheduler"), {
@@ -46,10 +46,10 @@ async function addTaskToFirestore(taskText) {
 addTaskBtn.addEventListener('click', async () => {
     const task = taskInput.value.trim();
     if (task) {
-        let taskId = addTaskToFirestore(task);
+        let taskId = await addTaskToFirestore(task);
         taskInput.value = "";
         createLiTask(taskId, task);
-    } else {
+    } else {+
         alert("Please enter a task!");
     }
 });
