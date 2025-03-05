@@ -19,9 +19,10 @@ const firebaseConfig = {
   messagingSenderId: "853608682087",
   appId: "1:853608682087:web:9d0c4898b2f0f9040cbac2",
 };
-  
-const app = initializeApp(firebaseConfig);
+
 const db = getFirestore(app);
+const app = initializeApp(firebaseConfig);
+
 
 const taskInput = document.getElementById('taskInput');
 const addTaskBtn = document.getElementById('addTaskBtn');
