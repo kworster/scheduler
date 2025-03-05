@@ -1,6 +1,9 @@
 import { initializeApp } from 'firebase/app';
 import { doc, getDocs, addDoc, updateDoc, getFirestore, collection } from "firebase/firestore";
 
+import { GoogleGenerativeAI } from '@google/generative-ai';
+
+
 
 const sw = new URL('service-worker.js', import.meta.url)
 if ('serviceWorker' in navigator) {
@@ -33,6 +36,20 @@ const taskList = document.getElementById('taskList');
 window.addEventListener('load', () => {
   renderTasks();
 });
+
+//Call in the event listener for page load
+async function getApiKey() {
+  let snapshot = await getDoc(doc(db, "apikey", "googlegenai"));
+  apiKey =  snapshot.data().key;
+  genAI = new GoogleGenerativeAI(apiKey);
+  model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
+}
+
+async function askChatBot(request) {
+  return await model.generateContent(request);
+}
+
+
 
 //Add Task
 addTaskBtn.addEventListener('click', async () => {
