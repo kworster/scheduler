@@ -33,16 +33,21 @@ window.addEventListener('load', () => {
   renderTasks();
 });
 
+async function addTaskToFirestore(taskText) {
+  let task = await addDoc(collection(db, "scheduler"), {
+    text: taskText, 
+    completed: false
+  });  
+  return task.id;
+}
+
 
 // Add Task
 addTaskBtn.addEventListener('click', async () => {
     const task = taskInput.value.trim();
     if (task) {
-      let task = await addDoc(collection(db, "scheduler"), {
-        text: taskText, 
-        completed: false
-      });  
-      return task.id;
+        let taskId = await addTaskToFirestore(task);
+        taskInput.value = "";
         
         createLiTask(taskId, task);
     } else {
@@ -86,13 +91,7 @@ async function renderTasks() {
     });
   }
 
-  async function addTaskToFirestore(taskText) {
-    let task = await addDoc(collection(db, "scheduler"), {
-      text: taskText, 
-      completed: false
-    });  
-    return task.id;
-  }
+  
 
   async function getTasksFromFirestore() {
     return await getDocs(collection(db, "scheduler"));
