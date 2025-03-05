@@ -44,15 +44,16 @@ async function addTaskToFirestore(taskText) {
 
 // Add Task
 addTaskBtn.addEventListener('click', async () => {
-    const task = taskInput.value.trim();
-    if (task) {
-        let taskId = await addTaskToFirestore(task);
-        taskInput.value = "";
-        console.log("testing")
-        createLiTask(taskId, task);
-    } else {
-        alert("Please enter a task!");
-    }
+    // const task = taskInput.value.trim();
+    // if (task) {
+    //     let taskId = await addTaskToFirestore(task);
+    //     taskInput.value = "";
+    //     console.log("testing")
+    //     createLiTask(taskId, task);
+    // } else {
+    //     alert("Please enter a task!");
+    // }
+    console.log("testing")
 });
 
 // Remove Task
