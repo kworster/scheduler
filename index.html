@@ -13,9 +13,14 @@
     <div class="container">
         <label for="taskInput"><h2>Enter an Event</h2></label>
         <input name="taskInput" type="text" id="taskInput">
-        <button id="addTaskBtn">Add Event</button>
+        <button id="addTaskBtn">Add</button>
         <ul aria-live="polite" id="taskList"></ul>
     </div>
     <script type="module" src="app.js"></script>
+    <div id="chatbot-container">
+        <div id="chat-history"></div>
+        <input type="text" id="chat-input">
+        <button id="send-btn">Send</button>
+    </div>
 </body>
 </html>

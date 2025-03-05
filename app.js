@@ -119,6 +119,66 @@ async function renderTasks() {
     renderTasks();
   });
 
+  //
+  function ruleChatBot(request) {
+    if (request.startsWith("add event")) {
+      let task = request.replace("add event", "").trim();
+      if (task) {
+          addTask(task);
+          appendMessage('Event ' + task + ' added!');
+      } else {
+          appendMessage("Please specify an event to add.");
+      }
+      return true;
+    } else if (request.startsWith("complete")) {
+        let taskName = request.replace("complete", "").trim();
+        if (taskName) {
+            if(removeFromTaskName(taskName)) {
+              appendMessage('Event ' + taskName + ' marked as complete.');
+            } else {
+              appendMessage("Event not found!");
+            }
+            
+        } else {
+            appendMessage("Please specify an event to complete.");
+        }
+        return true;
+    }
+  
+    return false;
+  }
+
+  aiButton.addEventListener('click', async () => {
+    let prompt = aiInput.value.trim().toLowerCase();
+    if(prompt) {
+      if(!ruleChatBot(prompt)){
+        askChatBot(prompt);
+      }
+    } else {
+      appendMessage("Please enter a prompt")
+    }  
+  });
+
+  function appendMessage(message) {
+    let history = document.createElement("div");
+    history.textContent = message;
+    history.className = 'history';
+    chatHistory.appendChild(history);
+    aiInput.value = "";
+  }
+  
+  function removeFromTaskName(task) {
+    let ele = document.getElementsByName(task);
+    if(ele.length == 0){
+      return false;
+    }
+    ele.forEach(e => {
+      removeTask(e.id);
+      removeVisualTask(e.id);
+    })
+    return true;
+  }
+
  
 window.addEventListener('error', function (event) {
     console.error('Error occurred: ', event.message);
