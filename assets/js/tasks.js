@@ -38,26 +38,26 @@ function appendMessage(message) {
 }
 
 function ruleChatBot(request) {
-  if (request.startsWith("add task")) {
-    let task = request.replace("add task", "").trim();
+  if (request.startsWith("add book")) {
+    let task = request.replace("add book", "").trim();
     if (task) {
         addTask(task);
-        appendMessage('Task ' + task + ' added!');
+        appendMessage('Book ' + task + ' added!');
     } else {
-        appendMessage("Please specify a task to add.");
+        appendMessage("Please specify a book to add.");
     }
     return true;
-  } else if (request.startsWith("complete")) {
-      let taskName = request.replace("complete", "").trim();
+  } else if (request.startsWith("remove")) {
+      let taskName = request.replace("remove", "").trim();
       if (taskName) {
           if(removeFromTaskName(taskName)) {
-            appendMessage('Task ' + taskName + ' marked as complete.');
+            appendMessage('Book ' + taskName + ' has been removed.');
           } else {
-            appendMessage("Task not found!");
+            appendMessage("Book not found!");
           }
           
       } else {
-          appendMessage("Please specify a task to complete.");
+          appendMessage("Please specify a book to remove.");
       }
       return true;
   }

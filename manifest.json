@@ -1,6 +1,6 @@
 {
-    "name": "Event Scheduler",
-    "short_name": "Scheduler",
+    "name": "Book Log App",
+    "short_name": "Book Log",
     "start_url": "/index.html",
     "display": "standalone",
     "background_color": "#f4f4f4",

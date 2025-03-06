@@ -1,10 +1,10 @@
 # scheduler
 
 Project Title:
-The Event Scheduler App
+The Book Log App
 
 Description:
-The Event Scheduler App was created to help organize all your upcoming events into one location. The app is able to Add and manage events, set reminders, and view events in a calendar layout.
+The Book Log App was created to help organize all your completed books in one location. The app is able track books you’ve read, rate them, and organize by genre or author.
 
 Getting Started:
 
