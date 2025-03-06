@@ -22,14 +22,6 @@ if(!email){
     window.location.href = "index.html";
 }
 
-
-console.log("Attempting Firestore operation:", {
-  operationType: "set", // or "get", "update", etc.
-  path: docRef.path, // or the path string
-  data: dataToWrite, // Or the data you are reading, if a read operation.
-  user: firebase.auth().currentUser // Include the currently logged-in user (if applicable)
-});
-
 async function getApiKey() {
   let snapshot = await getDoc(doc(db, "apikey", "googlegenai"));
   apiKey =  snapshot.data().key;
