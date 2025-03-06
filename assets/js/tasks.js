@@ -75,6 +75,8 @@ async function askChatBot(request) {
 async function addTask(task) {
   let taskId = await addTaskToFirestore(task);
   taskInput.value = "";
+  taskInput2.value =""
+  console.log(taskInput2)
   createLiTask(taskId, task);
 }
 
@@ -118,8 +120,7 @@ async function renderTasks() {
     let task = await addDoc(collection(db, "scheduler"), {
       text: taskText,
       email: email, 
-      completed: false,
-      genre: taskInput3,
+      completed: false, 
     });  
     return task.id;
   }
