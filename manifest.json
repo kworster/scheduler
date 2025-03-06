@@ -1,7 +1,7 @@
 {
     "name": "Event Scheduler",
     "short_name": "Scheduler",
-    "start_url": "assets/html/*.html",
+    "start_url": "assets/html/index.html",
     "display": "standalone",
     "background_color": "#f4f4f4",
     "theme_color": "#0078D7",
