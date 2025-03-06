@@ -4,7 +4,7 @@
   "description": "",
   "type": "module",
   "scripts": {
-    "start": "parcel index.html",
+    "start": "parcel assets/html/*.html",
     "build": "parcel build --dist-dir docs --public-url /scheduler/ assets/html/*.html",
     "dev:build": "parcel build --dist-dir dist --no-content-hash assets/html/*.html",
     "dev:run": "npm run dev:build && npm run dev:start",
