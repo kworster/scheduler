@@ -174,7 +174,7 @@ addTaskBtn.addEventListener('click', async () => {
   if(task) {
     await addTask(task);
   } else {
-    alert("Please enter a task!");
+    alert("Please enter a book!");
   }
 });
 
