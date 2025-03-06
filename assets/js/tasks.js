@@ -75,8 +75,9 @@ async function askChatBot(request) {
 async function addTask(task) {
   let taskId = await addTaskToFirestore(task);
   taskInput.value = "";
-  taskInput2.value =""
-  console.log(taskInput2)
+  taskInput2.value = "";
+  taskInput3.value = "";
+  console.log(taskInput2.value)
   createLiTask(taskId, task);
 }
 
