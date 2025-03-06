@@ -131,6 +131,7 @@ async function renderTasks() {
     taskItem.id = id;
     taskItem.textContent = text;
     taskItem.tabIndex = 0;
+    taskItem.textStar = "***";
     taskItem.setAttribute("name", text.toLowerCase());
     taskList.appendChild(taskItem);
   }
