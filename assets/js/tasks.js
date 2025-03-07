@@ -135,8 +135,7 @@ async function renderTasks() {
   function createLiTask(id, text, genre) {
     let taskItem = document.createElement("li");
     taskItem.id = id;
-    taskItem.textContent = "Book Name: " + text;
-    taskItem.textContent = "Genre: " + genre;
+    taskItem.textContent = "Book Name: " + text + "/n" + "Genre: ";
     taskItem.tabIndex = 0;
     taskItem.setAttribute("name", text.toLowerCase());
     taskList.appendChild(taskItem);
