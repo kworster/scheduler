@@ -141,6 +141,7 @@ async function renderTasks() {
     taskItem.tabIndex = 0;
     taskItem.genre = genre;
     taskItem.setAttribute("name", text.toLowerCase());
+    taskItem.setAttribute("author", author.toLowerCase());
     taskList.appendChild(taskItem);
   }
 
