@@ -3,8 +3,8 @@ import { doc, getDoc, getDocs, addDoc, updateDoc, collection, query, where } fro
 import { GoogleGenerativeAI } from '@google/generative-ai';
 
 const taskInput = document.getElementById('taskInput');
-// const taskInput2 = document.getElementById('taskInput2');
-// const taskInput3 = document.getElementById('taskInput3');
+const taskInput2 = document.getElementById('taskInput2');
+const taskInput3 = document.getElementById('taskInput3');
 const addTaskBtn = document.getElementById('addTaskBtn');
 const taskList = document.getElementById('taskList');
 
@@ -75,8 +75,8 @@ async function askChatBot(request) {
 async function addTask(task) {
   let taskId = await addTaskToFirestore(task);
   taskInput.value = "";
-  // taskInput2.value = "";
-  // taskInput3.value = "";
+  taskInput2.value = "";
+  taskInput3.value = "";
   createLiTask(taskId, task);
 }
 
