@@ -113,7 +113,7 @@ async function renderTasks() {
 
     taskArr.forEach(task => {
       if(!task.completed){
-        createLiTask(task.id, task.text, task.genre);
+        createLiTask(task.id, task.text, task.genre, task.author);
       }
     });
   }
