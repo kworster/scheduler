@@ -103,7 +103,7 @@ async function renderTasks() {
         "text": task.data().text,
         "completed": task.data().completed,
         "genre": task.data().genre,
-        "author":task.data().author
+        "author": task.data().author
       })
     });
 
@@ -124,7 +124,7 @@ async function renderTasks() {
       email: email, 
       completed: false, 
       genre: "test",
-      author: "test"
+      author: "test1",
     });  
     return task.id;
   }
