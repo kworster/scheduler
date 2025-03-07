@@ -102,7 +102,8 @@ async function renderTasks() {
         "id" : task.id,
         "text": task.data().text,
         "completed": task.data().completed,
-        "genre": task.data().genre
+        "genre": task.data().genre,
+        "author":task.data().author
       })
     });
 
@@ -122,7 +123,8 @@ async function renderTasks() {
       text: taskText,
       email: email, 
       completed: false, 
-      genre: "test"
+      genre: "test",
+      author: "test"
     });  
     return task.id;
   }
@@ -132,11 +134,12 @@ async function renderTasks() {
     return await getDocs(q);
   }
 
-  function createLiTask(id, text) {
+  function createLiTask(id, text, genre) {
     let taskItem = document.createElement("li");
     taskItem.id = id;
     taskItem.textContent = text;
     taskItem.tabIndex = 0;
+    taskItem.genre = genre;
     taskItem.setAttribute("name", text.toLowerCase());
     taskList.appendChild(taskItem);
   }
