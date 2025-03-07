@@ -20,6 +20,8 @@ var apiKey;
 var genAI;
 var model;
 
+console.log(taskInput2);
+
 if(!email){
     window.location.href = "index.html";
 }
