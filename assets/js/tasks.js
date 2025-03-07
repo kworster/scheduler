@@ -102,8 +102,6 @@ async function renderTasks() {
         "id" : task.id,
         "text": task.data().text,
         "completed": task.data().completed,
-        "genre": task.data().genre,
-        "author": task.data().author
       })
     });
 
@@ -113,7 +111,7 @@ async function renderTasks() {
 
     taskArr.forEach(task => {
       if(!task.completed){
-        createLiTask(task.id, task.text, task.genre, task.author);
+        createLiTask(task.id, task.text);
       }
     });
   }
@@ -139,9 +137,7 @@ async function renderTasks() {
     taskItem.id = id;
     taskItem.textContent = text;
     taskItem.tabIndex = 0;
-    taskItem.genre = genre;
     taskItem.setAttribute("name", text.toLowerCase());
-    taskItem.setAttribute("author", author.toLowerCase());
     taskList.appendChild(taskItem);
   }
 
