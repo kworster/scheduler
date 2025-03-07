@@ -123,7 +123,7 @@ async function renderTasks() {
       text: taskText,
       email: email, 
       completed: false, 
-      genre: "test",
+      genre: taskInput2.value,
       author: "test1",
     });  
     return task.id;
