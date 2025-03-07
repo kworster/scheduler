@@ -77,7 +77,6 @@ async function addTask(task) {
   taskInput.value = "";
   taskInput2.value = "";
   taskInput3.value = "";
-  console.log(taskInput2.value)
   createLiTask(taskId, task);
 }
 
@@ -102,7 +101,8 @@ async function renderTasks() {
       taskArr.push({
         "id" : task.id,
         "text": task.data().text,
-        "completed": task.data().completed
+        "completed": task.data().completed,
+        "genre": task.data().genre
       })
     });
 
@@ -112,7 +112,7 @@ async function renderTasks() {
 
     taskArr.forEach(task => {
       if(!task.completed){
-        createLiTask(task.id, task.text);
+        createLiTask(task.id, task.text, task.genre);
       }
     });
   }
@@ -122,6 +122,7 @@ async function renderTasks() {
       text: taskText,
       email: email, 
       completed: false, 
+      genre: "test"
     });  
     return task.id;
   }
